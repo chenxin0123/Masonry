@@ -31,6 +31,7 @@
         || self.layoutAttribute == NSLayoutAttributeHeight;
 }
 
+
 - (BOOL)isEqual:(MASViewAttribute *)viewAttribute {
     if ([viewAttribute isKindOfClass:self.class]) {
         return self.view == viewAttribute.view

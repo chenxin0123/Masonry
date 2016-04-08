@@ -33,6 +33,7 @@
 }
 
 #ifdef __IPHONE_7_0
+//边缘延伸的方向
 - (UIRectEdge)edgesForExtendedLayout {
     return UIRectEdgeNone;
 }

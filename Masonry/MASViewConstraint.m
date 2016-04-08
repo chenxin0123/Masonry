@@ -15,6 +15,7 @@
 
 @interface MAS_VIEW (MASConstraints)
 
+///已安装的约束MASConstraint MASViewConstraint MASCompositeConstraint
 @property (nonatomic, readonly) NSMutableSet *mas_installedConstraints;
 
 @end
@@ -22,7 +23,7 @@
 @implementation MAS_VIEW (MASConstraints)
 
 static char kInstalledConstraintsKey;
-
+///已安装的约束MASConstraint MASViewConstraint MASCompositeConstraint
 - (NSMutableSet *)mas_installedConstraints {
     NSMutableSet *constraints = objc_getAssociatedObject(self, &kInstalledConstraintsKey);
     if (!constraints) {
@@ -38,10 +39,14 @@ static char kInstalledConstraintsKey;
 @interface MASViewConstraint ()
 
 @property (nonatomic, strong, readwrite) MASViewAttribute *secondViewAttribute;
+///约束是安装在哪个视图
 @property (nonatomic, weak) MAS_VIEW *installedView;
+///约束
 @property (nonatomic, weak) MASLayoutConstraint *layoutConstraint;
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
+///默认MASLayoutPriorityRequired
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
+///默认1
 @property (nonatomic, assign) CGFloat layoutMultiplier;
 @property (nonatomic, assign) CGFloat layoutConstant;
 @property (nonatomic, assign) BOOL hasLayoutRelation;
@@ -296,10 +301,11 @@ static char kInstalledConstraintsKey;
 }
 
 - (void)install {
+    //已安装 返回
     if (self.hasBeenInstalled) {
         return;
     }
-    
+    //安装 然后返回 如果不符合条件往下执行
     if ([self supportsActiveProperty] && self.layoutConstraint) {
         self.layoutConstraint.active = YES;
         [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
@@ -314,6 +320,7 @@ static char kInstalledConstraintsKey;
     // alignment attributes must have a secondViewAttribute
     // therefore we assume that is refering to superview
     // eg make.left.equalTo(@10)
+    //非宽高约束的话 如果第二属性缺失则默认为父视图的属性
     if (!self.firstViewAttribute.isSizeAttribute && !self.secondViewAttribute) {
         secondLayoutItem = self.firstViewAttribute.view.superview;
         secondLayoutAttribute = firstLayoutAttribute;
@@ -330,8 +337,9 @@ static char kInstalledConstraintsKey;
     
     layoutConstraint.priority = self.layoutPriority;
     layoutConstraint.mas_key = self.mas_key;
-    
+    //installedView
     if (self.secondViewAttribute.view) {
+        //两个视图的共同祖先
         MAS_VIEW *closestCommonSuperview = [self.firstViewAttribute.view mas_closestCommonSuperview:self.secondViewAttribute.view];
         NSAssert(closestCommonSuperview,
                  @"couldn't find a common superview for %@ and %@",
@@ -340,10 +348,11 @@ static char kInstalledConstraintsKey;
     } else if (self.firstViewAttribute.isSizeAttribute) {
         self.installedView = self.firstViewAttribute.view;
     } else {
+        //无secondViewAttribute.view且不是宽高 装在父视图上
         self.installedView = self.firstViewAttribute.view.superview;
     }
 
-
+    //处理更新或者新加
     MASLayoutConstraint *existingConstraint = nil;
     if (self.updateExisting) {
         existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
@@ -364,6 +373,7 @@ static char kInstalledConstraintsKey;
 
     // go through constraints in reverse as we do not want to match auto-resizing or interface builder constraints
     // and they are likely to be added first.
+    //reverseObjectEnumerator 666
     for (NSLayoutConstraint *existingConstraint in self.installedView.constraints.reverseObjectEnumerator) {
         if (![existingConstraint isKindOfClass:MASLayoutConstraint.class]) continue;
         if (existingConstraint.firstItem != layoutConstraint.firstItem) continue;

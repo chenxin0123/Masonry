@@ -33,6 +33,7 @@
 }
 
 - (NSArray *)install {
+    //mas_remakeConstraints
     if (self.removeExisting) {
         NSArray *installedConstraints = [MASViewConstraint installedConstraintsForView:self.view];
         for (MASConstraint *constraint in installedConstraints) {
@@ -86,7 +87,7 @@
                                           );
     
     NSAssert((attrs & anyAttribute) != 0, @"You didn't pass any attribute to make.attributes(...)");
-    
+    //MASViewAttribute数组
     NSMutableArray *attributes = [NSMutableArray array];
     
     if (attrs & MASAttributeLeft) [attributes addObject:self.view.mas_left];
@@ -113,7 +114,7 @@
     if (attrs & MASAttributeCenterYWithinMargins) [attributes addObject:self.view.mas_centerYWithinMargins];
     
 #endif
-    
+    //MASViewConstraint
     NSMutableArray *children = [NSMutableArray arrayWithCapacity:attributes.count];
     
     for (MASViewAttribute *a in attributes) {

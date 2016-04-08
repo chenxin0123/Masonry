@@ -8,11 +8,13 @@
 
 #import "View+MASAdditions.h"
 
+//define this constant if you want to use Masonry without the 'mas_' prefix 没有实际内容
 #ifdef MAS_SHORTHAND
 
 /**
  *	Shorthand view additions without the 'mas_' prefixes,
  *  only enabled if MAS_SHORTHAND is defined
+ *  MAS_VIEW 根据平台不同UIView或者NSView 
  */
 @interface MAS_VIEW (MASShorthandAdditions)
 
@@ -27,6 +29,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *centerX;
 @property (nonatomic, strong, readonly) MASViewAttribute *centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *baseline;
+///接收一个NSLayoutAttribute 返回一个MASViewAttribute
 @property (nonatomic, strong, readonly) MASViewAttribute *(^attribute)(NSLayoutAttribute attr);
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
@@ -79,6 +82,8 @@ MAS_ATTR_FORWARD(centerXWithinMargins);
 MAS_ATTR_FORWARD(centerYWithinMargins);
 
 #endif
+
+
 
 - (MASViewAttribute *(^)(NSLayoutAttribute))attribute {
     return [self mas_attribute];

@@ -39,7 +39,7 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
     if (!self) return nil;
     
     self.title = @"Examples";
-    
+    ///初始化所有例子的控制器
     self.exampleControllers = @[
         [[MASExampleViewController alloc] initWithTitle:@"Basic"
                                               viewClass:MASExampleBasicView.class],
@@ -72,6 +72,7 @@ static NSString * const kMASCellReuseIdentifier = @"kMASCellReuseIdentifier";
 
     ];
     
+    ///如果支持topLayoutGuide
     if ([UIViewController instancesRespondToSelector:@selector(topLayoutGuide)])
     {
         self.exampleControllers = [self.exampleControllers arrayByAddingObject:[[MASExampleLayoutGuideViewController alloc] init]];

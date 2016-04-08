@@ -61,7 +61,7 @@
             [obj setMas_key:key];                                                 \
         }                                                                         \
     }
-
+#include <limits.h>
 /**
  *  Used to create object hashes
  *  Based on http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-hashing.html
@@ -73,6 +73,7 @@
  *  Given a scalar or struct value, wraps it in NSValue
  *  Based on EXPObjectify: https://github.com/specta/expecta
  */
+//M
 static inline id _MASBoxValue(const char *type, ...) {
     va_list v;
     va_start(v, type);
@@ -132,5 +133,5 @@ static inline id _MASBoxValue(const char *type, ...) {
     va_end(v);
     return obj;
 }
-
+//@encode(aType) 可以返回该类型的 C 字符串
 #define MASBoxValue(value) _MASBoxValue(@encode(__typeof__((value))), (value))

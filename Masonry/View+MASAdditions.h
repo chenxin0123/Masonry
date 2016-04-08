@@ -13,6 +13,7 @@
 /**
  *	Provides constraint maker block
  *  and convience methods for creating MASViewAttribute which are view + NSLayoutAttribute pairs
+ *  MAS_VIEW 根据平台不同UIView或者NSView
  */
 @interface MAS_VIEW (MASAdditions)
 
@@ -81,6 +82,7 @@
 - (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
 
 /**
+ *  之前的约束将被全部移除
  *  Creates a MASConstraintMaker with the callee view.
  *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
  *  All constraints previously installed for the view will be removed.

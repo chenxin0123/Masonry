@@ -215,6 +215,7 @@
  *  Defining MAS_SHORTHAND_GLOBALS will turn on auto-boxing for default syntax.
  *  A potential drawback of this is that the unprefixed macros will appear in global scope.
  */
+//M
 #define mas_equalTo(...)                 equalTo(MASBoxValue((__VA_ARGS__)))
 #define mas_greaterThanOrEqualTo(...)    greaterThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
 #define mas_lessThanOrEqualTo(...)       lessThanOrEqualTo(MASBoxValue((__VA_ARGS__)))

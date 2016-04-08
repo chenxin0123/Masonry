@@ -134,14 +134,35 @@
 }
 
 #pragma mark - heirachy
-
+//M
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
+    NSLog(@"before");
+//    MAS_VIEW *closestCommonSuperview = nil;
+//    NSMutableArray *superviews = NSMutableArray.new;
+//    MAS_VIEW *firstViewSuperview = self;
+//    while (firstViewSuperview) {
+//        [superviews addObject:firstViewSuperview];
+//        firstViewSuperview = firstViewSuperview.superview;
+//    }
+//    MAS_VIEW *secondViewSuperview = view;
+//    while (secondViewSuperview) {
+//        if ([superviews containsObject:secondViewSuperview]) {
+//            closestCommonSuperview = secondViewSuperview;
+//            break;
+//        }
+//        secondViewSuperview = secondViewSuperview.superview;
+//    }
+//    NSLog(@"end");
+//    return closestCommonSuperview;
+    
+    
     MAS_VIEW *closestCommonSuperview = nil;
-
+    
     MAS_VIEW *secondViewSuperview = view;
     while (!closestCommonSuperview && secondViewSuperview) {
         MAS_VIEW *firstViewSuperview = self;
         while (!closestCommonSuperview && firstViewSuperview) {
+            //相等找到了
             if (secondViewSuperview == firstViewSuperview) {
                 closestCommonSuperview = secondViewSuperview;
             }
@@ -149,6 +170,7 @@
         }
         secondViewSuperview = secondViewSuperview.superview;
     }
+    NSLog(@"end");
     return closestCommonSuperview;
 }
 

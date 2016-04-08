@@ -11,11 +11,13 @@
 /**
  *  An immutable tuple which stores the view and the related NSLayoutAttribute.
  *  Describes part of either the left or right hand side of a constraint equation
+ *  保存view item NSLayoutAttribute三个属性
  */
 @interface MASViewAttribute : NSObject
 
 /**
  *  The view which the reciever relates to. Can be nil if item is not a view.
+ *  item不是view时可以为空
  */
 @property (nonatomic, weak, readonly) MAS_VIEW *view;
 
@@ -30,7 +32,7 @@
 @property (nonatomic, assign, readonly) NSLayoutAttribute layoutAttribute;
 
 /**
- *  Convenience initializer.
+ *  Convenience initializer. 默认item为view
  */
 - (id)initWithView:(MAS_VIEW *)view layoutAttribute:(NSLayoutAttribute)layoutAttribute;
 
