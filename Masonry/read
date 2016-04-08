@@ -13,6 +13,7 @@
 --------➡️3
 ----edges
 --------addConstraintWithAttributes:
+------------➡️6
 ↘️MASConstraint
 2---uninstall🆗
 3---install🆗
@@ -22,6 +23,7 @@
 --------➡️4
 --------➡️5
 --------layoutConstraintSimilarTo:🆗
+6---initWithFirstViewAttribute:(MASViewAttribute *)
 ↘️MASCompositeConstraint : MASConstraint
 2---uninstall🆗
 3---install🆗
