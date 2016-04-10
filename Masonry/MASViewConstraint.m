@@ -195,6 +195,7 @@ static char kInstalledConstraintsKey;
             NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
             self.layoutRelation = relation;
             ///设置第二属性 调用重写的setter方法 NSValue View MASViewAttribute
+            
             //!!!
             self.secondViewAttribute = attribute;
             return self;
