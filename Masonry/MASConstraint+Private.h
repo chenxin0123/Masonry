@@ -19,7 +19,7 @@
 @property (nonatomic, assign) BOOL updateExisting;
 
 /**
- *	Usually MASConstraintMaker but could be a parent MASConstraint
+ *	Usually MASConstraintMaker but could be a parent MASConstraint(MASCompositeConstraint)
  */
 @property (nonatomic, weak) id<MASConstraintDelegate> delegate;
 
@@ -58,6 +58,7 @@
 /**
  *	Notifies the delegate when the constraint needs to be replaced with another constraint. For example
  *  A MASViewConstraint may turn into a MASCompositeConstraint when an array is passed to one of the equality blocks
+ *  当约束需要被替换掉的时候通知代理
  */
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint;
 

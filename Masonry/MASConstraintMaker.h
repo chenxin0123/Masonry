@@ -48,27 +48,102 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
  *	The following properties return a new MASViewConstraint
  *  with the first item set to the makers associated view and the appropriate MASViewAttribute
  */
+/**
+*  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+*  firstViewAttribute的view item都是self.view
+*/
 @property (nonatomic, strong, readonly) MASConstraint *left;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *top;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *right;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *bottom;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *leading;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *trailing;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *width;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *height;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *centerX;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *centerY;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *baseline;
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
-
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *leftMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *rightMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *topMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *bottomMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *leadingMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *trailingMargin;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *centerXWithinMargins;
+/**
+ *  添加并返回一个只含一个firstViewAttribute的MASViewConstraint约束
+ *  firstViewAttribute的view item都是self.view
+ */
 @property (nonatomic, strong, readonly) MASConstraint *centerYWithinMargins;
 
 #endif

@@ -15,7 +15,28 @@
 
 @implementation AppDelegate
 
+
+void fa() {
+    printf("this is a\n");
+}
+
+void fb() {
+    printf("this is b\n");
+}
+
+void fc() {
+    printf("this is c\n");
+}
+#define fa fb
+#define fb fa
+
+
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    fa(6);
+    
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     // Override point for customization after application launch.
     self.window.backgroundColor = UIColor.whiteColor;

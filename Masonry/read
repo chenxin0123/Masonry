@@ -1,45 +1,96 @@
-↘️类 分类
-🆗调用栈结束
-➡️调用转到
-Ⓜ️枚举
+
+/*********************************Classes*********************************/
+/* 例子的主页 */
+MASExampleListViewController
+
+/* 例子控制器 */
+MASExampleViewController
+
+/* layoutguide例子控制器 */
+MASExampleLayoutGuideViewController
+
+/**
+* 提供工厂方法来创建MASConstraint并安装 如- (MASConstraint *)left
+* 通过一个view来初始化
+*
+*/
+MASConstraintMaker
+
+/**
+* 约束基类 提供链式语法
+*/
+MASConstraint
+
+/**
+* 单个约束 包含必要的属性来生成一个NSLayoutConstraint
+*/
+MASViewConstraint : MASConstraint
+
+/**
+* 组合约束 包含一个childConstraints数字 数字存储MASViewConstraint对象
+*/
+MASCompositeConstraint : MASConstraint
+
+/**
+* 类似元组 存放view item NSLayoutAttribute
+* 一般情况下 view=item
+*/
+MASViewAttribute
+
+/**比NSLayoutConstraint多了个mas_key属性*/
+MASLayoutConstraint：NSLayoutConstraint
 
 
-↘️MASExampleListViewController🆗
-↘️MASExampleViewController🆗
-↘️MASExampleLayoutGuideViewController🆗
-↘️MASConstraintMaker
-1---install🆗
---------➡️2
---------➡️3
-----edges
---------addConstraintWithAttributes:
-------------➡️6
-↘️MASConstraint
-2---uninstall🆗
-3---install🆗
-↘️MASViewConstraint : MASConstraint
-2---uninstall🆗
-3---install🆗
---------➡️4
---------➡️5
---------layoutConstraintSimilarTo:🆗
-6---initWithFirstViewAttribute:(MASViewAttribute *)
-↘️MASCompositeConstraint : MASConstraint
-2---uninstall🆗
-3---install🆗
-↘️MASViewAttribute🆗
+/*********************************Categories*********************************/
+/**
+* 添加一个属性mas_installedConstraints 存放已安装的MASViewConstraint
+* 文件 MASViewConstraint
+*/
+View+MASConstraints
 
-↘️MASLayoutConstraint：NSLayoutConstraint🆗
+/**
+*  MAS_SHORTHAND宏存在的时候才有效
+*  用于方便使用的时候不用mas_前缀
+*  如view.top=view.mas_top
+*/
+View+MASShorthandAdditions
+
+/**
+* 提供约束生成更新重做方法，如最常用的mas_makeConstraints
+* 提供便捷的MASViewAttribute创建方法 如mas_left
+*/
+View+MASAdditions
 
 
-↘️View+MASConstraints
-4---mas_installedConstraints🆗
-↘️View+MASShorthandAdditions🆗
-↘️View+MASAdditions
-----mas_makeConstraints:➡️1
-----mas_updateConstraints:➡️1
-----mas_remakeConstraints:➡️1
-----(MASViewAttribute *)mas_left
-5---mas_closestCommonSuperview🆗
+/*********************************Enumerations*********************************/
+/**
+* 对应NSLayoutAttribute
+* 文件 MASConstraintMaker.h
+*/
+MASAttribute
 
-Ⓜ️MASAttribute
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

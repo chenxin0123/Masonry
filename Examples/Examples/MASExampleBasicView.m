@@ -38,7 +38,13 @@
     //if you want to use Masonry without the mas_ prefix
     //define MAS_SHORTHAND before importing Masonry.h see Masonry iOS Examples-Prefix.pch
     [greenView makeConstraints:^(MASConstraintMaker *make) {
-        make.top.greaterThanOrEqualTo(superview.top).offset(padding);
+        /** .top返回一个MASViewConstraint
+         *  greaterThanOrEqualTo调用基类MASConstraint的方法
+         *  superview.top返回MASViewAttribute 因为定义了宏MAS_SHORTHAND 所以可以直接使用superview.top  被替换成superview.mas_top
+         *  greaterThanOrEqualTo接收参数类型： MASViewAttribute, UIView, NSValue, NSArray
+         */
+        
+        make.top.greaterThanOrEqualTo(superview.mas_top).offset(padding);
         make.left.equalTo(superview.left).offset(padding);
         make.bottom.equalTo(blueView.top).offset(-padding);
         make.right.equalTo(redView.left).offset(-padding);

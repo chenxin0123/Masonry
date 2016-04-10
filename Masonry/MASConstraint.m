@@ -38,6 +38,7 @@
 
 - (MASConstraint * (^)(id))greaterThanOrEqualTo {
     return ^id(id attribute) {
+        //equalToWithRelation返回MASConstraint * (^)(id, NSLayoutRelation)类型block
         return self.equalToWithRelation(attribute, NSLayoutRelationGreaterThanOrEqual);
     };
 }

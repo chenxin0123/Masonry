@@ -239,6 +239,7 @@
 /**
  *  Aliases to corresponding relation methods (for shorthand macros)
  *  Also needed to aid autocompletion
+ *  对应方法的别名 为了自动补全 理论上这个方法不会被调用
  */
 - (MASConstraint * (^)(id attr))mas_equalTo;
 - (MASConstraint * (^)(id attr))mas_greaterThanOrEqualTo;

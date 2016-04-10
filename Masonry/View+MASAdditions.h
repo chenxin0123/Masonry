@@ -20,28 +20,85 @@
 /**
  *	following properties return a new MASViewAttribute with current view and appropriate NSLayoutAttribute
  */
+/**
+*    返回MASViewAttribute属性 view item都是self
+*/
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_left;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_top;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_right;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_bottom;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leading;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_trailing;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_width;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_height;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerX;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerY;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
+
 @property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
-
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leftMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_rightMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_topMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_bottomMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_leadingMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_trailingMargin;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerXWithinMargins;
+/**
+ *    返回MASViewAttribute属性 view item都是self
+ */
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerYWithinMargins;
 
 #endif

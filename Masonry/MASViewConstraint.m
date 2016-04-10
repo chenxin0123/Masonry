@@ -15,7 +15,7 @@
 
 @interface MAS_VIEW (MASConstraints)
 
-///已安装的约束MASConstraint MASViewConstraint MASCompositeConstraint
+///已安装的约束MASConstraint
 @property (nonatomic, readonly) NSMutableSet *mas_installedConstraints;
 
 @end
@@ -43,12 +43,14 @@ static char kInstalledConstraintsKey;
 @property (nonatomic, weak) MAS_VIEW *installedView;
 ///约束
 @property (nonatomic, weak) MASLayoutConstraint *layoutConstraint;
+///约束关系
 @property (nonatomic, assign) NSLayoutRelation layoutRelation;
 ///默认MASLayoutPriorityRequired
 @property (nonatomic, assign) MASLayoutPriority layoutPriority;
 ///默认1
 @property (nonatomic, assign) CGFloat layoutMultiplier;
 @property (nonatomic, assign) CGFloat layoutConstant;
+///是否有约束关系 设置layoutRelation时设为YES
 @property (nonatomic, assign) BOOL hasLayoutRelation;
 @property (nonatomic, strong) id mas_key;
 @property (nonatomic, assign) BOOL useAnimator;
@@ -57,10 +59,11 @@ static char kInstalledConstraintsKey;
 
 @implementation MASViewConstraint
 
+//M 用第一个属性来初始化
 - (id)initWithFirstViewAttribute:(MASViewAttribute *)firstViewAttribute {
     self = [super init];
     if (!self) return nil;
-    
+    //约束的第一个属性
     _firstViewAttribute = firstViewAttribute;
     self.layoutPriority = MASLayoutPriorityRequired;
     self.layoutMultiplier = 1;
@@ -175,6 +178,7 @@ static char kInstalledConstraintsKey;
 
 - (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation {
     return ^id(id attribute, NSLayoutRelation relation) {
+        //数组
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
             NSMutableArray *children = NSMutableArray.new;
@@ -190,6 +194,8 @@ static char kInstalledConstraintsKey;
         } else {
             NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
             self.layoutRelation = relation;
+            ///设置第二属性 调用重写的setter方法 NSValue View MASViewAttribute
+            //!!!
             self.secondViewAttribute = attribute;
             return self;
         }

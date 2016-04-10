@@ -18,10 +18,12 @@
 
 @implementation MASCompositeConstraint
 
+//M
 - (id)initWithChildren:(NSArray *)children {
     self = [super init];
     if (!self) return nil;
 
+    //将子约束的代理设置成自己
     _childConstraints = [children mutableCopy];
     for (MASConstraint *constraint in _childConstraints) {
         constraint.delegate = self;
@@ -110,10 +112,14 @@
 
 #pragma mark - debug helpers
 
+/**
+ *    使用方法 如self.key(@"key")
+ */
 - (MASConstraint * (^)(id))key {
     return ^id(id key) {
         self.mas_key = key;
         int i = 0;
+        //子约束加上index
         for (MASConstraint *constraint in self.childConstraints) {
             constraint.key([NSString stringWithFormat:@"%@[%d]", key, i++]);
         }

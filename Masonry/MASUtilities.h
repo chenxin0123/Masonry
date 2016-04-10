@@ -51,6 +51,7 @@
  *
  *  MASAttachKeys(view1, view2);
  */
+//M
 #define MASAttachKeys(...)                                                        \
     {                                                                             \
         NSDictionary *keyPairs = NSDictionaryOfVariableBindings(__VA_ARGS__);     \
@@ -79,6 +80,7 @@ static inline id _MASBoxValue(const char *type, ...) {
     va_start(v, type);
     id obj = nil;
     if (strcmp(type, @encode(id)) == 0) {
+        //@
         id actual = va_arg(v, id);
         obj = actual;
     } else if (strcmp(type, @encode(CGPoint)) == 0) {
