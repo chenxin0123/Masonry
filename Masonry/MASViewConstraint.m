@@ -65,6 +65,7 @@ static char kInstalledConstraintsKey;
     if (!self) return nil;
     //约束的第一个属性
     _firstViewAttribute = firstViewAttribute;
+    //typedef UILayoutPriority MASLayoutPriority; 
     self.layoutPriority = MASLayoutPriorityRequired;
     self.layoutMultiplier = 1;
     
@@ -110,6 +111,7 @@ static char kInstalledConstraintsKey;
     self.hasLayoutRelation = YES;
 }
 
+//isActive 8.0以后支持
 - (BOOL)supportsActiveProperty {
     return [self.layoutConstraint respondsToSelector:@selector(isActive)];
 }
@@ -131,6 +133,7 @@ static char kInstalledConstraintsKey;
     if ([secondViewAttribute isKindOfClass:NSValue.class]) {
         [self setLayoutConstantWithValue:secondViewAttribute];
     } else if ([secondViewAttribute isKindOfClass:MAS_VIEW.class]) {
+        //传进来的是视图 默认属性是firstViewAttribute的属性
         _secondViewAttribute = [[MASViewAttribute alloc] initWithView:secondViewAttribute layoutAttribute:self.firstViewAttribute.layoutAttribute];
     } else if ([secondViewAttribute isKindOfClass:MASViewAttribute.class]) {
         _secondViewAttribute = secondViewAttribute;
@@ -192,11 +195,14 @@ static char kInstalledConstraintsKey;
             [self.delegate constraint:self shouldBeReplacedWithConstraint:compositeConstraint];
             return compositeConstraint;
         } else {
+            
+            /*
+             1.没有约束关系
+             2.有约束关系且attribute是NSValuevalue类型 即:有约束关系时只能修改
+             */
             NSAssert(!self.hasLayoutRelation || self.layoutRelation == relation && [attribute isKindOfClass:NSValue.class], @"Redefinition of constraint relation");
             self.layoutRelation = relation;
             ///设置第二属性 调用重写的setter方法 NSValue View MASViewAttribute
-            
-            //!!!
             self.secondViewAttribute = attribute;
             return self;
         }
@@ -265,6 +271,7 @@ static char kInstalledConstraintsKey;
     }
 }
 
+//r
 - (void)setOffset:(CGFloat)offset {
     self.layoutConstant = offset;
 }
@@ -307,12 +314,13 @@ static char kInstalledConstraintsKey;
     [self uninstall];
 }
 
+//r
 - (void)install {
     //已安装 返回
     if (self.hasBeenInstalled) {
         return;
     }
-    //安装 然后返回 如果不符合条件往下执行
+    //isActive ios8.0之后支持
     if ([self supportsActiveProperty] && self.layoutConstraint) {
         self.layoutConstraint.active = YES;
         [self.firstViewAttribute.view.mas_installedConstraints addObject:self];
@@ -361,6 +369,7 @@ static char kInstalledConstraintsKey;
 
     //处理更新或者新加
     MASLayoutConstraint *existingConstraint = nil;
+    //更新的时候
     if (self.updateExisting) {
         existingConstraint = [self layoutConstraintSimilarTo:layoutConstraint];
     }
@@ -371,6 +380,7 @@ static char kInstalledConstraintsKey;
     } else {
         [self.installedView addConstraint:layoutConstraint];
         self.layoutConstraint = layoutConstraint;
+        //将已安装的约束放到view的关联对象内
         [firstLayoutItem.mas_installedConstraints addObject:self];
     }
 }

@@ -8,6 +8,7 @@
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"
 
+//抛出异常
 #define MASMethodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \
@@ -23,7 +24,7 @@
 }
 
 #pragma mark - NSLayoutRelation proxies
-
+//r
 - (MASConstraint * (^)(id))equalTo {
     return ^id(id attribute) {
         return self.equalToWithRelation(attribute, NSLayoutRelationEqual);
@@ -129,6 +130,11 @@
 
 #pragma mark - NSLayoutConstraint constant setter
 
+/**
+ *  设置constant
+ *
+ *  @param value NSValue
+ */
 - (void)setLayoutConstantWithValue:(NSValue *)value {
     if ([value isKindOfClass:NSNumber.class]) {
         self.offset = [(NSNumber *)value doubleValue];

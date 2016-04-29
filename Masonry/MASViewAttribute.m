@@ -26,6 +26,7 @@
     return self;
 }
 
+//r
 - (BOOL)isSizeAttribute {
     return self.layoutAttribute == NSLayoutAttributeWidth
         || self.layoutAttribute == NSLayoutAttributeHeight;

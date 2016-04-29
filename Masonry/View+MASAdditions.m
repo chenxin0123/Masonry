@@ -14,6 +14,7 @@
 ///创建约束
 - (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    //MASConstraintMaker的view是self
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
     block(constraintMaker);
     return [constraintMaker install];
@@ -37,6 +38,7 @@
 
 #pragma mark - NSLayoutAttribute properties
 
+///MASViewAttribute 元组
 - (MASViewAttribute *)mas_left {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeft];
 }

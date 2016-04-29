@@ -57,7 +57,7 @@
 }
 
 @implementation MAS_VIEW (MASShorthandAdditions)
-
+//[self top] 返回 [self mas_top]
 MAS_ATTR_FORWARD(top);
 MAS_ATTR_FORWARD(left);
 MAS_ATTR_FORWARD(bottom);
@@ -89,6 +89,7 @@ MAS_ATTR_FORWARD(centerYWithinMargins);
     return [self mas_attribute];
 }
 
+//MAS_SHORTHAND
 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *))block {
     return [self mas_makeConstraints:block];
 }

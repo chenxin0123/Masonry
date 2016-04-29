@@ -42,14 +42,16 @@
          *  greaterThanOrEqualTo调用基类MASConstraint的方法
          *  superview.top返回MASViewAttribute 因为定义了宏MAS_SHORTHAND 所以可以直接使用superview.top  被替换成superview.mas_top
          *  greaterThanOrEqualTo接收参数类型： MASViewAttribute, UIView, NSValue, NSArray
+         *  offset 调用valueOffset
          */
-        
+        //make view是sef constraints存放约束
         make.top.greaterThanOrEqualTo(superview.mas_top).offset(padding);
         make.left.equalTo(superview.left).offset(padding);
         make.bottom.equalTo(blueView.top).offset(-padding);
         make.right.equalTo(redView.left).offset(-padding);
         make.width.equalTo(redView.width);
 
+        //MASViewAttribute
         make.height.equalTo(redView.height);
         make.height.equalTo(blueView.height);
     }];
@@ -61,7 +63,7 @@
         make.bottom.equalTo(blueView.mas_top).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         make.width.equalTo(greenView.mas_width);
-        
+        //TOREAD
         make.height.equalTo(@[greenView, blueView]); //can pass array of views
     }];
     
@@ -70,6 +72,7 @@
         make.left.equalTo(superview.mas_left).offset(padding);
         make.bottom.equalTo(superview.mas_bottom).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
+        //TOREAD
         make.height.equalTo(@[greenView.mas_height, redView.mas_height]); //can pass array of attributes
     }];
 

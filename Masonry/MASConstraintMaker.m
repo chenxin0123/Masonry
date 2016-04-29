@@ -35,6 +35,7 @@
     return self;
 }
 
+//r
 - (NSArray *)install {
     //mas_remakeConstraints方法中调用的话需要移除已安装的约束
     if (self.removeExisting) {
@@ -48,6 +49,7 @@
         constraint.updateExisting = self.updateExisting;
         [constraint install];
     }
+    //???将数组清空
     [self.constraints removeAllObjects];
     return constraints;
 }
@@ -63,11 +65,20 @@
     [self.constraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
+/**
+ *  往一个约束里面添加约束对应属性的约束
+ *
+ *  @param constraint      MASViewConstraint约束
+ *  @param layoutAttribute NSLayoutAttribute
+ *
+ *  @return 如果constraint是空的 返回单个约束 否则返回一个数组
+ */
 - (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
     //item跟view相同
     MASViewAttribute *viewAttribute = [[MASViewAttribute alloc] initWithView:self.view layoutAttribute:layoutAttribute];
-    //用viewAttribute来创建一个MASViewConstraint
+    //用viewAttribute来创建一个MASViewConstraint 只含有一个firstFirstViewAttribute
     MASViewConstraint *newConstraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:viewAttribute];
+    
     if ([constraint isKindOfClass:MASViewConstraint.class]) {
         //replace with composite constraint
         //如果constraint是MASViewConstraint类型 那么将新建的约束一起放到一个MASCompositeConstraint
