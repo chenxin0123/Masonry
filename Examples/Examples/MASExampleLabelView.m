@@ -33,12 +33,12 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
     [self addSubview:self.shortLabel];
 
     self.longLabel = UILabel.new;
-    self.longLabel.numberOfLines = 8;
+    self.longLabel.numberOfLines = 0;
     self.longLabel.textColor = [UIColor darkGrayColor];
     self.longLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.longLabel.text = @"Bacon ipsum dolor sit amet spare ribs fatback kielbasa salami, tri-tip jowl pastrami flank short loin rump sirloin. Tenderloin frankfurter chicken biltong rump chuck filet mignon pork t-bone flank ham hock.";
     [self addSubview:self.longLabel];
-
+    self.longLabel.preferredMaxLayoutWidth = 288;
     [self.longLabel makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.left).insets(kPadding);
         make.top.equalTo(self.top).insets(kPadding);
@@ -60,9 +60,9 @@ static UIEdgeInsets const kPadding = {10, 10, 10, 10};
 
     // stay tuned for new easier way todo this coming soon to Masonry
 
-    CGFloat width = CGRectGetMinX(self.shortLabel.frame) - kPadding.left;
-    width -= CGRectGetMinX(self.longLabel.frame);
-    self.longLabel.preferredMaxLayoutWidth = width;
+//    CGFloat width = CGRectGetMinX(self.shortLabel.frame) - kPadding.left;
+//    width -= CGRectGetMinX(self.longLabel.frame);
+//    self.longLabel.preferredMaxLayoutWidth = width;
 
     // need to layoutSubviews again as frames need to recalculated with preferredLayoutWidth
     [super layoutSubviews];

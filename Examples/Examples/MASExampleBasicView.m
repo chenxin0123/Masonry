@@ -63,7 +63,7 @@
         make.bottom.equalTo(blueView.mas_top).offset(-padding);
         make.right.equalTo(superview.mas_right).offset(-padding);
         make.width.equalTo(greenView.mas_width);
-        //TOREAD
+        //数组 equalTo返回一个MASCompositeConstraint 并调用maker的(void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)将原先的MASViewConstraint替换为MASCompositeConstraint
         make.height.equalTo(@[greenView, blueView]); //can pass array of views
     }];
     

@@ -129,6 +129,7 @@ static char kInstalledConstraintsKey;
     return (self.layoutConstraint != nil) && [self isActive];
 }
 
+//r
 - (void)setSecondViewAttribute:(id)secondViewAttribute {
     if ([secondViewAttribute isKindOfClass:NSValue.class]) {
         [self setLayoutConstantWithValue:secondViewAttribute];
@@ -166,7 +167,7 @@ static char kInstalledConstraintsKey;
 }
 
 #pragma mark - MASLayoutPriority proxy
-
+//r
 - (MASConstraint * (^)(MASLayoutPriority))priority {
     return ^id(MASLayoutPriority priority) {
         NSAssert(!self.hasBeenInstalled,
@@ -178,12 +179,13 @@ static char kInstalledConstraintsKey;
 }
 
 #pragma mark - NSLayoutRelation proxy
-
+//r
 - (MASConstraint * (^)(id, NSLayoutRelation))equalToWithRelation {
     return ^id(id attribute, NSLayoutRelation relation) {
         //数组
         if ([attribute isKindOfClass:NSArray.class]) {
             NSAssert(!self.hasLayoutRelation, @"Redefinition of constraint relation");
+            //MASViewConstraint数组
             NSMutableArray *children = NSMutableArray.new;
             for (id attr in attribute) {
                 MASViewConstraint *viewConstraint = [self copy];
@@ -210,11 +212,11 @@ static char kInstalledConstraintsKey;
 }
 
 #pragma mark - Semantic properties
-
+//r
 - (MASConstraint *)with {
     return self;
 }
-
+//r
 - (MASConstraint *)and {
     return self;
 }
@@ -305,11 +307,11 @@ static char kInstalledConstraintsKey;
 }
 
 #pragma mark - MASConstraint
-
+//r
 - (void)activate {
     [self install];
 }
-
+//r
 - (void)deactivate {
     [self uninstall];
 }

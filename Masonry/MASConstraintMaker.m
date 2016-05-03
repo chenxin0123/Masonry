@@ -251,15 +251,15 @@
 
 
 #pragma mark - composite Attributes
-
+//r
 - (MASConstraint *)edges {
     return [self addConstraintWithAttributes:MASAttributeTop | MASAttributeLeft | MASAttributeRight | MASAttributeBottom];
 }
-
+//r
 - (MASConstraint *)size {
     return [self addConstraintWithAttributes:MASAttributeWidth | MASAttributeHeight];
 }
-
+//r
 - (MASConstraint *)center {
     return [self addConstraintWithAttributes:MASAttributeCenterX | MASAttributeCenterY];
 }

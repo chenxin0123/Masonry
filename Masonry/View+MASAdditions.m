@@ -28,9 +28,11 @@
     return [constraintMaker install];
 }
 
+//r
 - (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    //只会移除有mas创建的约束 通过xib sb拉的不会被移除
     constraintMaker.removeExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
@@ -139,25 +141,26 @@
 #pragma mark - heirachy
 //M
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
-    NSLog(@"before");
-//    MAS_VIEW *closestCommonSuperview = nil;
-//    NSMutableArray *superviews = NSMutableArray.new;
-//    MAS_VIEW *firstViewSuperview = self;
-//    while (firstViewSuperview) {
-//        [superviews addObject:firstViewSuperview];
-//        firstViewSuperview = firstViewSuperview.superview;
-//    }
-//    MAS_VIEW *secondViewSuperview = view;
-//    while (secondViewSuperview) {
-//        if ([superviews containsObject:secondViewSuperview]) {
-//            closestCommonSuperview = secondViewSuperview;
-//            break;
-//        }
-//        secondViewSuperview = secondViewSuperview.superview;
-//    }
-//    NSLog(@"end");
-//    return closestCommonSuperview;
     
+#if false
+    MAS_VIEW *closestCommonSuperview = nil;
+    NSMutableArray *superviews = NSMutableArray.new;
+    MAS_VIEW *firstViewSuperview = self;
+    while (firstViewSuperview) {
+        [superviews addObject:firstViewSuperview];
+        firstViewSuperview = firstViewSuperview.superview;
+    }
+    MAS_VIEW *secondViewSuperview = view;
+    while (secondViewSuperview) {
+        if ([superviews containsObject:secondViewSuperview]) {
+            closestCommonSuperview = secondViewSuperview;
+            break;
+        }
+        secondViewSuperview = secondViewSuperview.superview;
+    }
+    NSLog(@"end");
+    return closestCommonSuperview;
+#endif
     
     MAS_VIEW *closestCommonSuperview = nil;
     
@@ -173,7 +176,6 @@
         }
         secondViewSuperview = secondViewSuperview.superview;
     }
-    NSLog(@"end");
     return closestCommonSuperview;
 }
 

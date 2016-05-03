@@ -10,7 +10,7 @@
 #import "View+MASAdditions.h"
 
 @implementation NSArray (MASAdditions)
-
+///遍历数组中的视图 一次调用mas_makeConstraints方法
 - (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block {
     NSMutableArray *constraints = [NSMutableArray array];
     for (MAS_VIEW *view in self) {
